@@ -26,7 +26,7 @@ Pour visualiser les wireframes du MVP, consultez le fichier [`src/wirefrime.html
 
 1. Clonez le projet :
    ```
-   git clone <url-du-repo>
+   git clone https://github.com/sokevinjonas/Tontima.git
    ```
 2. Installez les dépendances :
    ```
