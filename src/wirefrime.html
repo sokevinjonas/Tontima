@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframes Tontima - Style Wave</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 40px;
+            padding: 20px 10px;
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .status-bar {
+            height: 44px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 20px;
+            height: calc(100% - 44px);
+            overflow-y: auto;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* TONTIMA COLORS */
+        .primary { background: #4A90E2; color: white; }
+        .secondary { background: #FF8C00; color: white; }
+        .success { background: #2ECC71; color: white; }
+        .warning { background: #F39C12; color: white; }
+        .danger { background: #E74C3C; color: white; }
+        
+        /* INPUTS STYLE WAVE */
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .input-field {
+            width: 100%;
+            height: 50px;
+            border: 2px solid #E5E5E5;
+            border-radius: 10px;
+            padding: 0 15px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #4A90E2;
+        }
+        
+        /* BUTTONS STYLE WAVE */
+        .btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* CARDS */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .tontine-card {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tontine-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E5E5E5;
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 2px solid white;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        /* NAVIGATION */
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .nav-item {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: #4A90E2;
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background: #E5E5E5;
+            border-radius: 4px;
+            margin: 0 auto 5px;
+        }
+        
+        .nav-item.active .nav-icon {
+            background: #4A90E2;
+        }
+        
+        /* KEYPAD STYLE WAVE */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .key {
+            height: 60px;
+            border: none;
+            background: none;
+            font-size: 24px;
+            font-weight: 300;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .key:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .key.zero {
+            grid-column: 2;
+        }
+        
+        .key.delete {
+            grid-column: 3;
+            background: #E5E5E5;
+            border-radius: 50%;
+        }
+        
+        /* PHONE INPUT STYLE */
+        .phone-input-container {
+            display: flex;
+            align-items: center;
+            margin: 40px 0;
+        }
+        
+        .country-code {
+            background: #2ECC71;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px 0 0 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .flag {
+            width: 24px;
+            height: 16px;
+            background: linear-gradient(to bottom, #2ECC71 50%, #FFD700 50%);
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        
+        .phone-number-input {
+            flex: 1;
+            height: 50px;
+            border: 2px solid #E5E5E5;
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+            padding: 0 15px;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+        
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4A90E2;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* QR CODE */
+        .qr-container {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .qr-pattern {
+            width: 150px;
+            height: 150px;
+            background-image: 
+                repeating-linear-gradient(0deg, #000, #000 3px, transparent 3px, transparent 6px),
+                repeating-linear-gradient(90deg, #000, #000 3px, transparent 3px, transparent 6px);
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #FF8C00;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .wireframe-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <h1 style="text-align: center; margin-bottom: 40px; color: #4A90E2; font-size: 32px;">📱 TONTIMA - Wireframes MVP</h1>
+        
+        <!-- ÉCRAN 1: CONNEXION PAR TÉLÉPHONE -->
+        <div class="phone-frame">
+            <div class="screen">
+                <div class="status-bar">
+                    <span>23:54</span>
+                    <span>🔋 85%</span>
+                </div>
+                <div class="content" style="text-align: center; padding-top: 60px;">
+                    <div style="margin-bottom: 60px;">
+                        <h1 style="font-size: 32px; color: #4A90E2; margin-bottom: 10px;">Tontima</h1>
+                        <p style="color: #666; font-size: 16px;">La tontine réinventée</p>
+                    </div>
+                    
+                    <p style="color: #333; margin-bottom: 40px; font-size: 18px;">
+                        Bienvenue ! Pour commencer, entrez votre numéro mobile
+                    </p>
+                    
+                    <div class="phone-input-container">
+                        <div class="country-code">
+                            <div class="flag"></div>
+                            +226
+                        </div>
+                        <input type="text" class="phone-number-input" placeholder="XX XX XX XX" value="">
+                    </div>
+                    
+                    <div class="keypad">
+                        <button class="key">1</button>
+                        <button class="key">2</button>
+                        <button class="key">3</button>
+                        <button class="key">4</button>
+                        <button class="key">5</button>
+                        <button class="key">6</button>
+                        <button class="key">7</button>
+                        <button class="key">8</button>
+                        <button class="key">9</button>
+                        <button class="key" style="opacity: 0;"></button>
+                        <button class="key zero">0</button>
+                        <button class="key delete">⌫</button>
+                    </div>
+                    
+                    <button class="btn primary" style="margin-top: 40px;">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ÉCRAN 2: ACCUEIL -->
+        <div class="phone-frame">
+            <div class="screen">
+                <div class="status-bar">
+                    <span>23:54</span>
+                    <span>🔋 85%</span>
+                </div>
+                <div class="content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <div>
+                            <h2 style="color: #333; margin-bottom: 5px;">Bonjour Amadou 👋</h2>
+                            <p style="color: #666; font-size: 14px;">Gérez vos tontines facilement</p>
+                        </div>
+                        <div class="member-avatar" style="background: #4A90E2;"></div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Tontines actives</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">45 000</div>
+                            <div class="stat-label">CFA ce mois</div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 30px 0 15px; color: #333;">Mes Tontines</h3>
+                    
+                    <div class="tontine-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <div>
+                                <h4 style="margin-bottom: 5px;">Tontine Amis</h4>
+                                <p style="opacity: 0.8; font-size: 14px;">12/15 membres</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 18px; font-weight: 600;">15 000 CFA</div>
+                                <div style="font-size: 12px; opacity: 0.8;">par mois</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; opacity: 0.9;">
+                            <span>Prochain tour: 15 Sept</span>
+                            <span>Mon tour: Oct</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4 style="margin-bottom: 5px; color: #333;">Tontine Famille</h4>
+                                <p style="color: #666; font-size: 14px;">8/10 membres</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 16px; font-weight: 600; color: #333;">25 000 CFA</div>
+                                <span class="status-dot success" style="position: static; display: inline-block; margin-left: 10px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn primary" style="margin-top: 20px;">
+                        + Créer une nouvelle tontine
+                    </button>
+                </div>
+                
+                <div class="bottom-nav">
+                    <div class="nav-item active">
+                        <div class="nav-icon"></div>
+                        Accueil
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Tontines
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Historique
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Profil
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ÉCRAN 3: CRÉER UNE TONTINE -->
+        <div class="phone-frame">
+            <div class="screen">
+                <div class="status-bar">
+                    <span>23:54</span>
+                    <span>🔋 85%</span>
+                </div>
+                <div class="content">
+                    <div style="display: flex; align-items: center; margin-bottom: 30px;">
+                        <button style="background: none; border: none; font-size: 24px; margin-right: 15px;">←</button>
+                        <h2 style="color: #333;">Créer une tontine</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Nom de la tontine</label>
+                        <input type="text" class="input-field" placeholder="ex: Tontine Amis">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Montant par cotisation (CFA)</label>
+                        <input type="number" class="input-field" placeholder="ex: 15000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Nombre de participants maximum</label>
+                        <input type="number" class="input-field" placeholder="ex: 12">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Fréquence des cotisations</label>
+                        <select class="input-field" style="color: #333;">
+                            <option>Mensuelle</option>
+                            <option>Bi-mensuelle</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Date de début</label>
+                        <input type="date" class="input-field">
+                    </div>
+                    
+                    <div class="card" style="background: #f8f9fa; margin: 20px 0;">
+                        <h4 style="color: #333; margin-bottom: 10px;">📋 Résumé</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="color: #666;">Total à collecter:</span>
+                            <span style="font-weight: 600; color: #333;">180 000 CFA</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666;">Durée estimée:</span>
+                            <span style="font-weight: 600; color: #333;">12 mois</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn primary">
+                        Créer la tontine
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ÉCRAN 4: DÉTAILS TONTINE -->
+        <div class="phone-frame">
+            <div class="screen">
+                <div class="status-bar">
+                    <span>23:54</span>
+                    <span>🔋 85%</span>
+                </div>
+                <div class="content">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                        <button style="background: none; border: none; font-size: 24px;">←</button>
+                        <h2 style="color: #333;">Tontine Amis</h2>
+                        <button style="background: none; border: none; font-size: 20px;">⚙️</button>
+                    </div>
+                    
+                    <div class="tontine-card" style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <div>
+                                <h3>15 000 CFA</h3>
+                                <p style="opacity: 0.8;">par membre / mois</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 20px; font-weight: 700;">12/15</div>
+                                <div style="font-size: 12px; opacity: 0.8;">membres</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; opacity: 0.9;">
+                            <span>Créée le 1er Août</span>
+                            <span>Prochain tour: 15 Sept</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <button class="btn primary" style="width: 48%; height: 40px; font-size: 14px;">
+                            📤 Inviter
+                        </button>
+                        <button class="btn secondary" style="width: 48%; height: 40px; font-size: 14px;">
+                            💰 Cotiser
+                        </button>
+                    </div>
+                    
+                    <h3 style="margin-bottom: 15px; color: #333;">Membres (12/15)</h3>
+                    
+                    <!-- Liste des membres -->
+                    <div class="card" style="padding: 15px; margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="member-avatar" style="background: #2ECC71;">
+                                    <div class="status-dot success"></div>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Amadou K.</div>
+                                    <div style="font-size: 12px; color: #666;">Organisateur</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 600; color: #2ECC71;">Payé</div>
+                                <div style="font-size: 12px; color: #666;">15/09</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: 15px; margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="member-avatar" style="background: #4A90E2;">
+                                    <div class="status-dot warning" style="background: #F39C12;"></div>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Fatima S.</div>
+                                    <div style="font-size: 12px; color: #666;">Membre</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 600; color: #F39C12;">En attente</div>
+                                <div style="font-size: 12px; color: #666;">2 jours</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: 15px; margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="member-avatar" style="background: #9B59B6;">
+                                    <div class="status-dot danger"></div>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Ibrahim T.</div>
+                                    <div style="font-size: 12px; color: #666;">Membre</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 600; color: #E74C3C;">Retard</div>
+                                <div style="font-size: 12px; color: #666;">5 jours</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Accueil
+                    </div>
+                    <div class="nav-item active">
+                        <div class="nav-icon"></div>
+                        Tontines
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Historique
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Profil
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ÉCRAN 5: PARTAGE INVITATION -->
+        <div class="phone-frame">
+            <div class="screen">
+                <div class="status-bar">
+                    <span>23:54</span>
+                    <span>🔋 85%</span>
+                </div>
+                <div class="content" style="text-align: center;">
+                    <div style="display: flex; align-items: center; margin-bottom: 30px;">
+                        <button style="background: none; border: none; font-size: 24px; margin-right: 15px;">←</button>
+                        <h2 style="color: #333; margin: 0;">Inviter des membres</h2>
+                    </div>
+                    
+                    <div class="card" style="background: #f8f9fa; text-align: left; margin-bottom: 30px;">
+                        <h4 style="color: #333; margin-bottom: 10px;">Tontine Amis</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="color: #666;">Montant:</span>
+                            <span style="font-weight: 600;">15 000 CFA/mois</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="color: #666;">Places restantes:</span>
+                            <span style="font-weight: 600; color: #2ECC71;">3/15</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666;">Début:</span>
+                            <span style="font-weight: 600;">1er Octobre</span>
+                        </div>
+                    </div>
+                    
+                    <div class="qr-container">
+                        <h3 style="color: white; margin-bottom: 20px;">Code QR d'invitation</h3>
+                        <div class="qr-code">
+                            <div class="qr-pattern"></div>
+                        </div>
+                        <p style="color: white; opacity: 0.9; font-size: 14px;">
+                            Scannez ce code pour rejoindre la tontine
+                        </p>
+                    </div>
+                    
+                    <div class="input-group" style="text-align: left;">
+                        <label class="input-label">Lien d'invitation</label>
+                        <div style="display: flex;">
+                            <input type="text" class="input-field" value="tontima.app/join/abc123" readonly style="border-radius: 10px 0 0 10px;">
+                            <button style="background: #4A90E2; color: white; border: none; padding: 0 20px; border-radius: 0 10px 10px 0; font-weight: 600;">
+                                Copier
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 30px;">
+                        <button class="btn primary" style="width: 50%; height: 45px;">
+                            Partager via WhatsApp
+                        </button>
+                        <button class="btn secondary" style="width: 50%; height: 45px;">
+                            Partager par SMS
+                        </button>
+                    </div>
+                    <button class="btn" style="margin-top: 30px; background: #E5E5E5; color: #333;">
+                        Terminer
+                    </button>
+                </div>
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Accueil
+                    </div>
+                    <div class="nav-item active">
+                        <div class="nav-icon"></div>
+                        Tontines
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Historique
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        Profil
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating action button -->
+        <button class="floating-action" title="Créer une tontine">
+            +
+        </button>
+    </div>
+</body>
+</html>
