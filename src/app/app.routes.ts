@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: '/onboarding',
+    pathMatch: 'full',
+  },
+  {
+    path: 'tabs',
     loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),
   },
 
@@ -29,3 +34,4 @@ export const routes: Routes = [
       import('./onboarding/onboarding.page').then((m) => m.OnboardingPage),
   },
 ];
+// sudo chown -R $USER:$USER node_modules package-lock.json

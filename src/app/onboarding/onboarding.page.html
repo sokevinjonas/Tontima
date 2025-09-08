@@ -1,13 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>onboarding</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="onboarding-content">
+  <!-- Swiper pour l'onboarding horizontal -->
+  <swiper-container
+    #swiper
+    [pagination]="true"
+    [space-between]="0"
+    [slides-per-view]="1"
+    (slidechange)="onSlideChange()"
+    class="onboarding-swiper"
+  >
+    <!-- Slide 1 -->
+    <swiper-slide class="slide">
+      <div class="slide-content">
+        <div class="image-container">
+          <div class="slide-icon-container">
+            <ion-icon name="people-circle" class="slide-icon"></ion-icon>
+          </div>
+        </div>
+        <div class="text-content">
+          <h1>Bienvenue sur Tontima</h1>
+          <p>
+            La tontine réinventée pour les organisateurs modernes. Gérez vos
+            groupes facilement et en toute sécurité.
+          </p>
+          <ion-button
+            expand="block"
+            class="action-button"
+            (click)="nextSlide()"
+          >
+            Bienvenu
+          </ion-button>
+        </div>
+      </div>
+    </swiper-slide>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">onboarding</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Slide 2 -->
+    <swiper-slide class="slide">
+      <div class="slide-content">
+        <div class="image-container">
+          <div class="slide-icon-container">
+            <ion-icon name="settings" class="slide-icon"></ion-icon>
+          </div>
+        </div>
+        <div class="text-content">
+          <h1>Organisez facilement</h1>
+          <p>
+            Créez vos tontines, invitez vos membres et suivez les paiements en
+            temps réel. Tout est automatisé pour vous.
+          </p>
+        </div>
+      </div>
+    </swiper-slide>
+
+    <!-- Slide 3 -->
+    <swiper-slide class="slide">
+      <div class="slide-content">
+        <div class="image-container">
+          <div class="slide-icon-container">
+            <ion-icon name="shield-checkmark" class="slide-icon"></ion-icon>
+          </div>
+        </div>
+        <div class="text-content">
+          <h1>Gérez en toute confiance</h1>
+          <p>
+            Notifications automatiques, rappels de paiement et suivi
+            transparent. Vos membres vous feront confiance.
+          </p>
+          <ion-button expand="block" class="action-button" (click)="goToAuth()">
+            Commencer
+          </ion-button>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <!-- Bouton Skip -->
+  <ion-button fill="clear" class="skip-button" (click)="goToAuth()">
+    Passer
+  </ion-button>
 </ion-content>

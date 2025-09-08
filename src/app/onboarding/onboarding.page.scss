@@ -1,0 +1,153 @@
+.onboarding-content {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  height: 100vh;
+}
+
+.onboarding-swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.slide-icon-container {
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.slide-icon {
+  font-size: 80px;
+  color: #ff6b35;
+}
+
+.text-content {
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.text-content h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.text-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  color: white;
+}
+
+.action-button {
+  --background: #ff6b35;
+  --background-hover: #e55a2b;
+  --color: white;
+  --border-radius: 25px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.progress-indicators {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background-color: #ff6b35;
+  transform: scale(1.2);
+}
+
+.skip-button {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  --color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  z-index: 10;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .text-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .text-content p {
+    font-size: 1rem;
+  }
+
+  .slide-icon-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .slide-icon {
+    font-size: 60px;
+  }
+}
+
+// Swiper pagination customization
+.onboarding-swiper::part(pagination) {
+  bottom: 80px;
+}
+
+.onboarding-swiper::part(bullet) {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 12px;
+  height: 12px;
+}
+
+.onboarding-swiper::part(bullet-active) {
+  background-color: #ff6b35;
+}
