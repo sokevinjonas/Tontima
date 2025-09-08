@@ -35,4 +35,10 @@ export const routes: Routes = [
         (m) => m.ContinueWithEmailPage
       ),
   },
+  {
+    path: 'detail-members/:id',
+    loadComponent: () =>
+      import('./pages/detail-members/detail-members.page').then((m) => m.DetailMembersPage)
+  }
+  
 ];

@@ -31,7 +31,8 @@ import {
   ellipsisVertical,
 } from 'ionicons/icons';
 
-interface Member {
+// Renamed to avoid conflicts if a real Member interface exists elsewhere
+interface MemberListItem {
   id: number;
   name: string;
   countryCode: string;
@@ -41,9 +42,9 @@ interface Member {
 }
 
 @Component({
-  selector: 'app-members',
-  templateUrl: './members.page.html',
-  styleUrls: ['./members.page.scss'],
+  selector: 'app-detail-members', // Assuming this is the selector in the file
+  templateUrl: './detail-members.page.html',
+  styleUrls: ['./detail-members.page.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -69,10 +70,10 @@ interface Member {
     IonFabButton,
   ],
 })
-export class MembersPage implements OnInit {
+export class DetailMembersPage implements OnInit {
   
-  allMembers: Member[] = [];
-  filteredMembers: Member[] = [];
+  allMembers: MemberListItem[] = [];
+  filteredMembers: MemberListItem[] = [];
 
   constructor() {
     addIcons({ addCircleOutline, call, logoWhatsapp, add, ellipsisVertical });
@@ -87,8 +88,6 @@ export class MembersPage implements OnInit {
       { id: 1, name: 'Adama Traoré', countryCode: '+226', phone: '70 01 02 03', avatar: 'https://i.pravatar.cc/150?u=adama', tontineCount: 3 },
       { id: 2, name: 'Bintou Diallo', countryCode: '+226', phone: '71 04 05 06', avatar: 'https://i.pravatar.cc/150?u=bintou', tontineCount: 1 },
       { id: 3, name: 'Cheick Koné', countryCode: '+226', phone: '72 07 08 09', avatar: 'https://i.pravatar.cc/150?u=cheick', tontineCount: 0 },
-      { id: 4, name: 'Djeneba Sissoko', countryCode: '+226', phone: '73 10 11 12', avatar: 'https://i.pravatar.cc/150?u=djeneba', tontineCount: 2 },
-      { id: 5, name: 'Moussa Diarra', countryCode: '+226', phone: '74 13 14 15', avatar: 'https://i.pravatar.cc/150?u=moussa', tontineCount: 0 },
     ];
     this.filteredMembers = [...this.allMembers];
   }
@@ -104,11 +103,11 @@ export class MembersPage implements OnInit {
     console.log('Ajouter un nouveau membre');
   }
 
-  callMember(member: Member) {
+  callMember(member: MemberListItem) {
     console.log('Appeler:', member.name);
   }
 
-  sendWhatsApp(member: Member) {
+  sendWhatsApp(member: MemberListItem) {
     console.log('Envoyer un WhatsApp à:', member.name);
   }
 }
