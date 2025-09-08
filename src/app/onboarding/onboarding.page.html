@@ -2,9 +2,10 @@
   <!-- Swiper pour l'onboarding horizontal -->
   <swiper-container
     #swiper
-    [pagination]="true"
-    [space-between]="0"
-    [slides-per-view]="1"
+    pagination="true"
+    space-between="0"
+    slides-per-view="1"
+    direction="horizontal"
     (slidechange)="onSlideChange()"
     class="onboarding-swiper"
   >

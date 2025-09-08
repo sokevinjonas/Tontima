@@ -1,13 +1,107 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>auth</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="auth-content">
+  <div class="auth-wrapper">
+    <!-- En-tête avec titre -->
+    <div class="header-section">
+      <ion-text color="light">
+        <h1 class="app-title">Tontima</h1>
+        <p class="app-subtitle">La tontine réinventée</p>
+      </ion-text>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">auth</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Carte principale d'authentification -->
+    <ion-card class="auth-card">
+      <ion-card-header>
+        <ion-card-title class="auth-title"
+          >Connectez-vous pour commencer</ion-card-title
+        >
+        <ion-card-subtitle class="auth-description">
+          Choisissez votre méthode de connexion préférée
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- Boutons de connexion sociale -->
+        <div class="social-buttons">
+          <!-- Connexion Google -->
+          <ion-button
+            expand="block"
+            fill="outline"
+            color="danger"
+            class="social-button"
+            (click)="signInWithGoogle()"
+            [disabled]="isLoading"
+          >
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            Continuer avec Google
+          </ion-button>
+
+          <!-- Connexion Facebook -->
+          <ion-button
+            expand="block"
+            fill="outline"
+            color="primary"
+            class="social-button"
+            (click)="signInWithFacebook()"
+            [disabled]="isLoading"
+          >
+            <ion-icon name="logo-facebook" slot="start"></ion-icon>
+            Continuer avec Facebook
+          </ion-button>
+
+          <!-- Connexion Apple -->
+          <ion-button
+            expand="block"
+            fill="outline"
+            color="dark"
+            class="social-button"
+            (click)="signInWithApple()"
+            [disabled]="isLoading"
+          >
+            <ion-icon name="logo-apple" slot="start"></ion-icon>
+            Continuer avec Apple
+          </ion-button>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider-section">
+          <ion-text color="medium">
+            <p class="divider-text">ou</p>
+          </ion-text>
+        </div>
+
+        <!-- Connexion par email -->
+        <ion-button
+          expand="block"
+          fill="clear"
+          color="primary"
+          class="email-button"
+          (click)="signInWithEmail()"
+          [disabled]="isLoading"
+        >
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          Continuer avec email
+        </ion-button>
+
+        <!-- Indicateur de chargement -->
+        <div class="loading-section" *ngIf="isLoading">
+          <ion-spinner name="crescent" color="primary"></ion-spinner>
+          <ion-text color="primary">
+            <p class="loading-text">Connexion en cours...</p>
+          </ion-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Footer avec conditions -->
+    <div class="footer-section">
+      <ion-text color="light">
+        <p class="terms-text">
+          En continuant, vous acceptez nos
+          <a href="#" class="terms-link">Conditions d'utilisation</a>
+          et notre
+          <a href="#" class="terms-link">Politique de confidentialité</a>
+        </p>
+      </ion-text>
+    </div>
+  </div>
 </ion-content>
