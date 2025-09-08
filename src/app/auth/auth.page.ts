@@ -41,7 +41,7 @@ export class AuthPage implements OnInit {
       // Simulation d'une connexion réussie
       setTimeout(() => {
         this.isLoading = false;
-        this.router.navigate(['/tabs']);
+        this.router.navigate(['/tabs/home']);
       }, 2000);
     } catch (error) {
       this.isLoading = false;
@@ -58,7 +58,7 @@ export class AuthPage implements OnInit {
       // Simulation d'une connexion réussie
       setTimeout(() => {
         this.isLoading = false;
-        this.router.navigate(['/tabs']);
+        this.router.navigate(['/tabs/home']);
       }, 2000);
     } catch (error) {
       this.isLoading = false;
@@ -75,7 +75,7 @@ export class AuthPage implements OnInit {
       // Simulation d'une connexion réussie
       setTimeout(() => {
         this.isLoading = false;
-        this.router.navigate(['/tabs']);
+        this.router.navigate(['/tabs/home']);
       }, 2000);
     } catch (error) {
       this.isLoading = false;
@@ -84,19 +84,7 @@ export class AuthPage implements OnInit {
   }
 
   async signInWithEmail() {
-    this.isLoading = true;
-    try {
-      // TODO: Implémenter l'authentification par email avec Supabase
-      console.log('Connexion avec email...');
-
-      // Simulation d'une connexion réussie
-      setTimeout(() => {
-        this.isLoading = false;
-        this.router.navigate(['/tabs']);
-      }, 2000);
-    } catch (error) {
-      this.isLoading = false;
-      console.error('Erreur lors de la connexion email:', error);
-    }
+    // Rediriger vers la page de connexion par email
+    this.router.navigate(['/continue-with-email']);
   }
 }

@@ -1,0 +1,253 @@
+.email-auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 56px); // Hauteur moins la toolbar
+  padding: 20px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.auth-form-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-item {
+  margin-bottom: 20px;
+  --border-radius: 12px;
+  --background: var(--ion-color-light);
+}
+
+.form-item ion-label {
+  font-weight: 500;
+  color: var(--ion-color-dark);
+  margin-bottom: 8px;
+}
+
+.form-item ion-input {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+.form-item.ion-invalid {
+  --border-color: var(--ion-color-danger);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-item {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --min-height: auto;
+}
+
+.checkbox-label {
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.forgot-password-btn {
+  --color: var(--ion-color-primary);
+  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.action-buttons {
+  margin-top: 30px;
+}
+
+.login-button {
+  --border-radius: 12px;
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+}
+
+.signup-button {
+  --border-radius: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.divider-section {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.divider-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ion-color-medium);
+  opacity: 0.3;
+}
+
+.divider-text {
+  background: var(--ion-color-light);
+  padding: 0 15px;
+  margin: 0;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-section {
+  text-align: center;
+  margin-top: 30px;
+  max-width: 350px;
+}
+
+.terms-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.terms-link {
+  color: var(--ion-color-light);
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.terms-link:hover {
+  opacity: 0.8;
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .email-auth-wrapper {
+    padding: 15px;
+  }
+
+  .auth-form-card {
+    max-width: 100%;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .email-auth-wrapper {
+    padding: 40px;
+  }
+
+  .auth-form-card {
+    max-width: 450px;
+  }
+
+  .header-section {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .email-auth-wrapper {
+    padding: 60px;
+  }
+
+  .auth-form-card {
+    max-width: 500px;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .footer-section {
+    margin-top: 40px;
+  }
+}
+
+// Animation pour les boutons
+.login-button,
+.signup-button {
+  transition: all 0.3s ease;
+}
+
+.login-button:not([disabled]):active,
+.signup-button:not([disabled]):active {
+  transform: translateY(1px);
+}
+
+// Style pour le bouton de visibilité du mot de passe
+ion-item ion-button[slot="end"] {
+  --color: var(--ion-color-medium);
+  margin: 0;
+}
+
+// Animation du spinner dans le bouton
+ion-button ion-spinner {
+  margin-right: 8px;
+}
+
+// Style pour les notes d'erreur
+ion-note[slot="error"] {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+// Style pour la toolbar
+ion-toolbar {
+  --background: transparent;
+  --color: var(--ion-color-light);
+}
+
+ion-back-button {
+  --color: var(--ion-color-light);
+}
+
+ion-title {
+  color: var(--ion-color-light);
+  font-weight: 600;
+}

@@ -2,7 +2,7 @@
   <div class="auth-wrapper">
     <!-- En-tête avec titre -->
     <div class="header-section">
-      <ion-text color="light">
+      <ion-text color="dark">
         <h1 class="app-title">Tontima</h1>
         <p class="app-subtitle">La tontine réinventée</p>
       </ion-text>
@@ -11,9 +11,7 @@
     <!-- Carte principale d'authentification -->
     <ion-card class="auth-card">
       <ion-card-header>
-        <ion-card-title class="auth-title"
-          >Connectez-vous pour commencer</ion-card-title
-        >
+        <ion-card-title class="auth-title">Connectez-vous pour commencer</ion-card-title>
         <ion-card-subtitle class="auth-description">
           Choisissez votre méthode de connexion préférée
         </ion-card-subtitle>
@@ -23,40 +21,22 @@
         <!-- Boutons de connexion sociale -->
         <div class="social-buttons">
           <!-- Connexion Google -->
-          <ion-button
-            expand="block"
-            fill="outline"
-            color="danger"
-            class="social-button"
-            (click)="signInWithGoogle()"
-            [disabled]="isLoading"
-          >
+          <ion-button expand="block" fill="outline" color="danger" class="social-button" (click)="signInWithGoogle()"
+            [disabled]="isLoading">
             <ion-icon name="logo-google" slot="start"></ion-icon>
             Continuer avec Google
           </ion-button>
 
           <!-- Connexion Facebook -->
-          <ion-button
-            expand="block"
-            fill="outline"
-            color="primary"
-            class="social-button"
-            (click)="signInWithFacebook()"
-            [disabled]="isLoading"
-          >
+          <ion-button expand="block" fill="outline" color="primary" class="social-button" (click)="signInWithFacebook()"
+            [disabled]="isLoading">
             <ion-icon name="logo-facebook" slot="start"></ion-icon>
             Continuer avec Facebook
           </ion-button>
 
           <!-- Connexion Apple -->
-          <ion-button
-            expand="block"
-            fill="outline"
-            color="dark"
-            class="social-button"
-            (click)="signInWithApple()"
-            [disabled]="isLoading"
-          >
+          <ion-button expand="block" fill="outline" color="dark" class="social-button" (click)="signInWithApple()"
+            [disabled]="isLoading">
             <ion-icon name="logo-apple" slot="start"></ion-icon>
             Continuer avec Apple
           </ion-button>
@@ -70,14 +50,8 @@
         </div>
 
         <!-- Connexion par email -->
-        <ion-button
-          expand="block"
-          fill="clear"
-          color="primary"
-          class="email-button"
-          (click)="signInWithEmail()"
-          [disabled]="isLoading"
-        >
+        <ion-button expand="block" fill="clear" color="primary" class="email-button" (click)="signInWithEmail()"
+          [disabled]="isLoading">
           <ion-icon name="mail-outline" slot="start"></ion-icon>
           Continuer avec email
         </ion-button>
@@ -94,7 +68,7 @@
 
     <!-- Footer avec conditions -->
     <div class="footer-section">
-      <ion-text color="light">
+      <ion-text color="dark">
         <p class="terms-text">
           En continuant, vous acceptez nos
           <a href="#" class="terms-link">Conditions d'utilisation</a>

@@ -14,12 +14,12 @@ export const routes: Routes = [
       {
         path: 'members',
         loadComponent: () =>
-          import('../pages/members/members.page').then((m) => m.MembersPage),
+          import('../members/members.page').then((m) => m.MembersPage),
       },
       {
         path: 'account',
         loadComponent: () =>
-          import('../pages/account/account.page').then((m) => m.AccountPage),
+          import('../account/account.page').then((m) => m.AccountPage),
       },
     ],
   },
