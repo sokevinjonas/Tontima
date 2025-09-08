@@ -16,7 +16,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let member of filteredMembers">
       <!-- Changement de la route pour pointer vers la page corrigée -->
-      <ion-item button [routerLink]="['/detail-members', member.id]">
+      <ion-item button [routerLink]="['/show-members', member.id]">
         <ion-avatar slot="start">
           <img [src]="member.avatar" alt="Avatar de {{ member.name }}" />
         </ion-avatar>

@@ -1,13 +1,48 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>create-tontine</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Créer une Tontine</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">create-tontine</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="tontineForm" (ngSubmit)="submitForm()">
+    <ion-list>
+      <!-- Champ Nom -->
+      <ion-item>
+        <ion-input formControlName="name" label="Nom de la tontine" labelPlacement="stacked"
+          placeholder="Ex: Tontine des Amis" errorText="Le nom est requis"></ion-input>
+      </ion-item>
+
+      <!-- Champ Montant -->
+      <ion-item>
+        <ion-input formControlName="amount" label="Montant de la cotisation (FCFA)" labelPlacement="stacked"
+          type="number" placeholder="Ex: 10000" errorText="Montant invalide"></ion-input>
+      </ion-item>
+
+      <!-- Champ Fréquence -->
+      <ion-item>
+        <ion-select formControlName="frequency" label="Fréquence des cotisations" labelPlacement="stacked"
+          placeholder="Sélectionner" errorText="Veuillez sélectionner une fréquence">
+          <ion-select-option value="weekly">Chaque semaine</ion-select-option>
+          <ion-select-option value="monthly">Chaque mois</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Champ Participants -->
+      <ion-item>
+        <ion-input formControlName="participants" label="Nombre de participants" labelPlacement="stacked" type="number"
+          placeholder="Ex: 10" errorText="Minimum 2 participants"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding-top">
+      <ion-button expand="block" type="submit" [disabled]="!tontineForm.valid">
+        Étape suivante : Inviter les membres
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </div>
+  </form>
 </ion-content>

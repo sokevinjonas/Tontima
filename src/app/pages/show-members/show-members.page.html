@@ -1,13 +1,14 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/members"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ member?.name }}</ion-title>
+    <ion-title>show-members</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <div *ngIf="member">
     <!-- Section principale -->
     <div class="profile-header">
