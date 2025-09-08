@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/create-tontine"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inviter les Membres</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <!-- Connecter la barre de recherche à la logique -->
+    <ion-searchbar placeholder="Rechercher un membre" (ionInput)="handleSearch($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Mes Membres</ion-label>
+    </ion-list-header>
+    <!-- Itérer sur la liste filtrée -->
+    <ion-item *ngFor="let member of filteredMembers">
+      <ion-avatar slot="start">
+        <img [src]="member.avatar" />
+      </ion-avatar>
+      <ion-label>{{ member.name }}</ion-label>
+      <ion-checkbox slot="end" (ionChange)="onMemberSelect(member.id, $event.detail.checked)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" class="ion-margin" (click)="createTontine()" [disabled]="selectedMembers.length === 0">
+      Créer la Tontine ({{ selectedMembers.length }} membres)
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

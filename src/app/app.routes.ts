@@ -38,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'show-members/:id',
     loadComponent: () => import('./pages/show-members/show-members.page').then( m => m.ShowMembersPage)
+  },
+  {
+    path: 'invited-person',
+    loadComponent: () => import('./pages/invited-person/invited-person.page').then( m => m.InvitedPersonPage)
   }
   
 ];

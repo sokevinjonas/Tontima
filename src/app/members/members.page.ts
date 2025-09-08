@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -73,7 +73,7 @@ export class MembersPage implements OnInit {
   allMembers: Member[] = [];
   filteredMembers: Member[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
     // Mise à jour des icônes
     addIcons({ addCircleOutline, call, logoWhatsapp, add, eyeOutline, peopleCircleOutline });
   }
@@ -102,6 +102,7 @@ export class MembersPage implements OnInit {
 
   addNewMember() {
     console.log('Ajouter un nouveau membre');
+    this.router.navigateByUrl("/create-tontine");
   }
 
   callMember(member: Member) {

@@ -20,20 +20,20 @@ export interface MemberDetail {
 export const MOCK_MEMBERS_DATABASE: MemberDetail[] = [
   { 
     id: 1, name: 'Adama Traoré', countryCode: '+226', phone: '70 01 02 03', avatar: 'https://i.pravatar.cc/150?u=adama',
-    idCardFrontUrl: 'https://via.placeholder.com/300x180.png?text=Recto+CNIB', 
-    idCardBackUrl: 'https://via.placeholder.com/300x180.png?text=Verso+CNIB',
+    idCardFrontUrl: 'https://placehold.co/400', 
+    idCardBackUrl: 'https://placehold.co/400',
     tontines: [ { name: 'Tontine Amis', amount: 15000 }, { name: 'Tontine Famille', amount: 25000 } ]
   },
   { 
     id: 2, name: 'Bintou Diallo', countryCode: '+226', phone: '71 04 05 06', avatar: 'https://i.pravatar.cc/150?u=bintou',
-    idCardFrontUrl: 'https://via.placeholder.com/300x180.png?text=Recto+CNIB', 
-    idCardBackUrl: 'https://via.placeholder.com/300x180.png?text=Verso+CNIB',
+    idCardFrontUrl: 'https://placehold.co/400', 
+    idCardBackUrl: 'https://placehold.co/400',
     tontines: [ { name: 'Tontine Business', amount: 50000 } ]
   },
    { 
     id: 3, name: 'Cheick Koné', countryCode: '+226', phone: '72 07 08 09', avatar: 'https://i.pravatar.cc/150?u=cheick',
-    idCardFrontUrl: 'https://via.placeholder.com/300x180.png?text=Recto+CNIB', 
-    idCardBackUrl: 'https://via.placeholder.com/300x180.png?text=Verso+CNIB',
+    idCardFrontUrl: 'https://placehold.co/400', 
+    idCardBackUrl: 'https://placehold.co/400',
     tontines: []
   },
 ];

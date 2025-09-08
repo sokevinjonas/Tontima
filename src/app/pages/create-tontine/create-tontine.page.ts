@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router'; // Importer le Router
 import {
   IonHeader,
   IonToolbar,
@@ -26,7 +27,7 @@ import { arrowForward } from 'ionicons/icons';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule, // Important pour les formulaires
+    ReactiveFormsModule,
     IonHeader,
     IonToolbar,
     IonButtons,
@@ -45,7 +46,8 @@ import { arrowForward } from 'ionicons/icons';
 export class CreateTontinePage implements OnInit {
   tontineForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  // Injecter le Router dans le constructeur
+  constructor(private fb: FormBuilder, private router: Router) {
     addIcons({ arrowForward });
 
     this.tontineForm = this.fb.group({
@@ -60,9 +62,9 @@ export class CreateTontinePage implements OnInit {
 
   submitForm() {
     if (this.tontineForm.valid) {
-      console.log('Formulaire valide !');
-      console.log(this.tontineForm.value);
-      // Prochaine étape : naviguer vers la page d'invitation des membres
+      console.log('Formulaire valide ! Données:', this.tontineForm.value);
+      // Naviguer vers la page d'invitation
+      this.router.navigate(['/invited-person']);
     } else {
       console.log('Formulaire invalide.');
     }
