@@ -5,7 +5,6 @@ services:
     working_dir: /app
     volumes:
       - .:/app # Monte ton code local dans le conteneur
-      - /app/node_modules
     ports:
       - "8100:8100" # Ionic dev server
       - "35729:35729" # Live reload automatique
