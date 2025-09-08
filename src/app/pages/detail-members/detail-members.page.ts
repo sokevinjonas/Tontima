@@ -1,113 +1,134 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonButtons,
+  IonBackButton,
+  IonTitle,
+  IonContent,
+  IonAvatar,
+  IonGrid,
+  IonRow,
+  IonCol,
   IonButton,
   IonIcon,
-  IonSearchbar,
-  IonContent,
-  IonList,
-  IonItemSliding,
-  IonItem,
-  IonAvatar,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
   IonLabel,
-  IonBadge,
-  IonItemOptions,
-  IonItemOption,
-  IonFab,
-  IonFabButton,
+  IonListHeader,
+  IonList,
+  IonItem,
+  IonNote,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import {
-  addCircleOutline,
-  call,
-  logoWhatsapp,
-  add,
-  ellipsisVertical,
-} from 'ionicons/icons';
+import { call, logoWhatsapp, peopleCircleOutline } from 'ionicons/icons';
 
-// Renamed to avoid conflicts if a real Member interface exists elsewhere
-interface MemberListItem {
+// Interfaces pour la structure des données de la page de détail
+interface TontineSummary {
+  name: string;
+  amount: number;
+}
+
+interface MemberDetail {
   id: number;
   name: string;
   countryCode: string;
   phone: string;
   avatar: string;
-  tontineCount: number;
+  idCardFrontUrl: string;
+  idCardBackUrl: string;
+  tontines: TontineSummary[];
 }
 
 @Component({
-  selector: 'app-detail-members', // Assuming this is the selector in the file
+  selector: 'app-detail-members',
   templateUrl: './detail-members.page.html',
   styleUrls: ['./detail-members.page.scss'],
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink,
+    CurrencyPipe,
     IonHeader,
     IonToolbar,
-    IonTitle,
     IonButtons,
+    IonBackButton,
+    IonTitle,
+    IonContent,
+    IonAvatar,
+    IonGrid,
+    IonRow,
+    IonCol,
     IonButton,
     IonIcon,
-    IonSearchbar,
-    IonContent,
-    IonList,
-    IonItemSliding,
-    IonItem,
-    IonAvatar,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
     IonLabel,
-    IonBadge,
-    IonItemOptions,
-    IonItemOption,
-    IonFab,
-    IonFabButton,
+    IonListHeader,
+    IonList,
+    IonItem,
+    IonNote,
   ],
 })
 export class DetailMembersPage implements OnInit {
-  
-  allMembers: MemberListItem[] = [];
-  filteredMembers: MemberListItem[] = [];
+  member: MemberDetail | undefined;
 
-  constructor() {
-    addIcons({ addCircleOutline, call, logoWhatsapp, add, ellipsisVertical });
+  // Données de test pour simuler une base de données
+  private mockDatabase: MemberDetail[] = [
+    { 
+      id: 1, name: 'Adama Traoré', countryCode: '+226', phone: '70 01 02 03', avatar: 'https://i.pravatar.cc/150?u=adama',
+      idCardFrontUrl: 'https://via.placeholder.com/300x180.png?text=Recto+CNIB', 
+      idCardBackUrl: 'https://via.placeholder.com/300x180.png?text=Verso+CNIB',
+      tontines: [ { name: 'Tontine Amis', amount: 15000 }, { name: 'Tontine Famille', amount: 25000 } ]
+    },
+    { 
+      id: 2, name: 'Bintou Diallo', countryCode: '+226', phone: '71 04 05 06', avatar: 'https://i.pravatar.cc/150?u=bintou',
+      idCardFrontUrl: 'https://via.placeholder.com/300x180.png?text=Recto+CNIB', 
+      idCardBackUrl: 'https://via.placeholder.com/300x180.png?text=Verso+CNIB',
+      tontines: [ { name: 'Tontine Business', amount: 50000 } ]
+    },
+     { 
+      id: 3, name: 'Cheick Koné', countryCode: '+226', phone: '72 07 08 09', avatar: 'https://i.pravatar.cc/150?u=cheick',
+      idCardFrontUrl: 'https://via.placeholder.com/300x180.png?text=Recto+CNIB', 
+      idCardBackUrl: 'https://via.placeholder.com/300x180.png?text=Verso+CNIB',
+      tontines: []
+    },
+  ];
+
+  constructor(private route: ActivatedRoute) {
+    addIcons({ call, logoWhatsapp, peopleCircleOutline });
   }
 
   ngOnInit() {
-    this.initializeMembers();
+    // Récupère l'ID du membre depuis l'URL
+    const memberId = this.route.snapshot.paramMap.get('id');
+    if (memberId) {
+      // Trouve le membre correspondant dans notre base de données de test
+      this.member = this.getMemberDetails(+memberId);
+    }
   }
 
-  initializeMembers() {
-    this.allMembers = [
-      { id: 1, name: 'Adama Traoré', countryCode: '+226', phone: '70 01 02 03', avatar: 'https://i.pravatar.cc/150?u=adama', tontineCount: 3 },
-      { id: 2, name: 'Bintou Diallo', countryCode: '+226', phone: '71 04 05 06', avatar: 'https://i.pravatar.cc/150?u=bintou', tontineCount: 1 },
-      { id: 3, name: 'Cheick Koné', countryCode: '+226', phone: '72 07 08 09', avatar: 'https://i.pravatar.cc/150?u=cheick', tontineCount: 0 },
-    ];
-    this.filteredMembers = [...this.allMembers];
+  getMemberDetails(id: number): MemberDetail | undefined {
+    // Simule un appel à une base de données pour récupérer les détails d'un seul membre
+    return this.mockDatabase.find(m => m.id === id);
   }
 
-  onSearchChange(event: any) {
-    const query = event.target.value.toLowerCase();
-    this.filteredMembers = this.allMembers.filter(member => 
-      member.name.toLowerCase().includes(query) || member.phone.includes(query)
-    );
+  callMember() {
+    if (this.member) {
+      console.log('Appeler ' + this.member.phone);
+    }
   }
 
-  addNewMember() {
-    console.log('Ajouter un nouveau membre');
-  }
-
-  callMember(member: MemberListItem) {
-    console.log('Appeler:', member.name);
-  }
-
-  sendWhatsApp(member: MemberListItem) {
-    console.log('Envoyer un WhatsApp à:', member.name);
+  sendWhatsApp() {
+    if (this.member) {
+      console.log('WhatsApp à ' + this.member.phone);
+    }
   }
 }

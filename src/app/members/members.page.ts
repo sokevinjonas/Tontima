@@ -16,7 +16,6 @@ import {
   IonItem,
   IonAvatar,
   IonLabel,
-  IonBadge,
   IonItemOptions,
   IonItemOption,
   IonFab,
@@ -28,7 +27,8 @@ import {
   call,
   logoWhatsapp,
   add,
-  ellipsisVertical,
+  eyeOutline, // Ajout de l'icône oeil
+  peopleCircleOutline, // Ajout de l'icône pour le compteur
 } from 'ionicons/icons';
 
 interface Member {
@@ -62,7 +62,6 @@ interface Member {
     IonItem,
     IonAvatar,
     IonLabel,
-    IonBadge,
     IonItemOptions,
     IonItemOption,
     IonFab,
@@ -75,7 +74,8 @@ export class MembersPage implements OnInit {
   filteredMembers: Member[] = [];
 
   constructor() {
-    addIcons({ addCircleOutline, call, logoWhatsapp, add, ellipsisVertical });
+    // Mise à jour des icônes
+    addIcons({ addCircleOutline, call, logoWhatsapp, add, eyeOutline, peopleCircleOutline });
   }
 
   ngOnInit() {

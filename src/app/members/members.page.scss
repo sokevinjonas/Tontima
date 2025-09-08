@@ -24,25 +24,31 @@ ion-label {
     font-size: 0.9rem;
     color: var(--ion-color-medium);
   }
+
+  .tontine-count {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--ion-color-secondary);
+    margin-top: 4px;
+
+    .tontine-icon {
+      margin-right: 4px;
+      font-size: 1rem;
+    }
+  }
 }
 
 .end-slot-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  gap: 4px; // Espace entre le badge et l'icône
+  height: 100%;
 }
 
-ion-badge {
-  font-size: 0.75rem;
-  padding: 5px 8px;
-}
-
-.slide-indicator {
-  font-size: 1rem;
+.view-indicator {
+  font-size: 1.4rem;
   color: var(--ion-color-medium-tint);
-  opacity: 0.7;
 }
 
 .whatsapp {

@@ -1,52 +1,67 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Mes Membres</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="addNewMember()">
-        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
-      </ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/members"></ion-back-button>
     </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar mode="ios" placeholder="Rechercher un membre..." (ionInput)="onSearchChange($event)"></ion-searchbar>
+    <ion-title>{{ member?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item-sliding *ngFor="let member of filteredMembers">
-      <ion-item button [routerLink]="['/detail-members', member.id]">
-        <ion-avatar slot="start">
-          <img [src]="member.avatar" alt="Avatar de {{ member.name }}" />
-        </ion-avatar>
-        <ion-label>
-          <h2>{{ member.name }}</h2>
-          <p>{{ member.countryCode }} {{ member.phone }}</p>
-        </ion-label>
+  <div *ngIf="member">
+    <!-- Section principale -->
+    <div class="profile-header">
+      <ion-avatar class="profile-avatar">
+        <img [src]="member.avatar" />
+      </ion-avatar>
+      <h2>{{ member.name }}</h2>
+      <p>{{ member.countryCode }} {{ member.phone }}</p>
+    </div>
 
-        <!-- Badge et indicateur de glissement -->
-        <div class="end-slot-container" slot="end">
-          <ion-badge [color]="member.tontineCount > 0 ? 'secondary' : 'light'">
-            {{ member.tontineCount }} tontine(s)
-          </ion-badge>
-          <ion-icon name="ellipsis-vertical" class="slide-indicator"></ion-icon>
+    <!-- Boutons d'action -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="callMember()">
+            <ion-icon slot="start" name="call"></ion-icon>
+            Appeler
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="success" (click)="sendWhatsApp()">
+            <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+            WhatsApp
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Pièces d'identité -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Pièce d'identité (CNIB)</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="id-card-container">
+        <div class="id-card">
+          <img [src]="member.idCardFrontUrl" alt="Recto CNIB" />
+          <ion-label>Recto</ion-label>
         </div>
+        <div class="id-card">
+          <img [src]="member.idCardBackUrl" alt="Verso CNIB" />
+          <ion-label>Verso</ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Tontines en commun -->
+    <ion-list-header>Tontines en commun ({{ member.tontines.length }})</ion-list-header>
+    <ion-list>
+      <ion-item *ngFor="let tontine of member.tontines">
+        <ion-icon slot="start" name="people-circle-outline" color="secondary"></ion-icon>
+        <ion-label>{{ tontine.name }}</ion-label>
+        <ion-note slot="end">{{ tontine.amount | currency:'XOF' }}</ion-note>
       </ion-item>
+    </ion-list>
 
-      <ion-item-options side="end">
-        <ion-item-option color="success" (click)="callMember(member)">
-          <ion-icon slot="icon-only" name="call"></ion-icon>
-        </ion-item-option>
-        <ion-item-option class="whatsapp" (click)="sendWhatsApp(member)">
-          <ion-icon slot="icon-only" name="logo-whatsapp"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addNewMember()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  </div>
 </ion-content>

@@ -15,6 +15,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item-sliding *ngFor="let member of filteredMembers">
+      <!-- Changement de la route pour pointer vers la page corrigée -->
       <ion-item button [routerLink]="['/detail-members', member.id]">
         <ion-avatar slot="start">
           <img [src]="member.avatar" alt="Avatar de {{ member.name }}" />
@@ -22,14 +23,16 @@
         <ion-label>
           <h2>{{ member.name }}</h2>
           <p>{{ member.countryCode }} {{ member.phone }}</p>
+          <!-- Nombre de tontines déplacé ici -->
+          <p class="tontine-count">
+            <ion-icon name="people-circle-outline" class="tontine-icon"></ion-icon>
+            {{ member.tontineCount }} tontine(s)
+          </p>
         </ion-label>
 
-        <!-- Badge et indicateur de glissement -->
+        <!-- Remplacement de l'icône -->
         <div class="end-slot-container" slot="end">
-          <ion-badge [color]="member.tontineCount > 0 ? 'secondary' : 'light'">
-            {{ member.tontineCount }} tontine(s)
-          </ion-badge>
-          <ion-icon name="ellipsis-vertical" class="slide-indicator"></ion-icon>
+          <ion-icon name="eye-outline" class="view-indicator"></ion-icon>
         </div>
       </ion-item>
 
