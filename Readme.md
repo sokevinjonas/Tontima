@@ -41,17 +41,18 @@ Pour visualiser les wireframes du MVP, consultez le fichier [`src/wirefrime.html
    L'application sera accessible sur http://localhost:8100
    Les modifications de code se refléteront automatiquement grâce au Live Reload.
 
-4. Pour lancer le conteneur en arrière-plan:
+<!-- 4. Pour lancer le conteneur en arrière-plan:
    ```
    docker compose -f docker-compose.dev.yml up -d
-   ```
+   ``` -->
+
 5. Voir les logs du conteneur:
    ```
    docker compose logs -f ionic-tontina-dev
    ```
 6. Arrêter et supprimer le conteneur:
    ```
-   docker compose down
+   docker compose -f docker-compose.dev.yml down -v
    ```
 
 ## Auteur

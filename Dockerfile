@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 # Étape 2 : Servir l'app avec Nginx
-FROM nginx:alpine
+FROM nginx:1.29.1-alpine
 
 COPY --from=build /app/www /usr/share/nginx/html
 

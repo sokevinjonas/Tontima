@@ -1,12 +1,14 @@
 services:
   ionic:
     image: node:22-alpine
-    container_name: ionic-tontina-dev
+    container_name: tontina-dev
     working_dir: /app
     volumes:
       - .:/app # Monte ton code local dans le conteneur
-      - /app/node_modules # Evite les conflits node_modules
+      - /app/node_modules
     ports:
       - "8100:8100" # Ionic dev server
       - "35729:35729" # Live reload automatique
-    command: sh -c "npm install -g @ionic/cli && npm install && ionic serve --host=0.0.0.0 --port=8100 --disableHostCheck"
+    command: sh -c "npm install -g @ionic/cli && npm install && ionic serve --host=0.0.0.0 --port=8100 --disableHostCheck --no-open"
+    stdin_open: true # pour que le conteneur reste attaché si nécessaire
+    tty: true # pour garder le terminal actif
