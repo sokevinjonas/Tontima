@@ -5,8 +5,9 @@
 
 export const environment = {
   production: false,
-  url_supabase: "http://127.0.0.1:54321",
-  key_public: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU"
+  // url_supabase: "http://127.0.0.1:54321",
+  url_supabase: "https://socfghinoqyoozbfmisq.supabase.co",
+  key_public: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvY2ZnaGlub3F5b296YmZtaXNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczNzY2NDcsImV4cCI6MjA3Mjk1MjY0N30.5PTwey6dFgBcyweTPjkwf9DLu-u1UJk7YINcg51Xics"
 };
 
 /*

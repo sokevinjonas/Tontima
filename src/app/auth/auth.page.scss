@@ -60,41 +60,6 @@
   letter-spacing: 0;
 }
 
-.divider-section {
-  text-align: center;
-  margin: 20px 0;
-  position: relative;
-}
-
-.divider-section::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--ion-color-medium);
-  opacity: 0.3;
-}
-
-.divider-text {
-  background: var(--ion-color-light);
-  padding: 0 15px;
-  margin: 0;
-  font-size: 0.9rem;
-  position: relative;
-  z-index: 1;
-}
-
-.email-button {
-  --padding-top: 12px;
-  --padding-bottom: 12px;
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0;
-  margin-bottom: 20px;
-}
-
 .loading-section {
   display: flex;
   flex-direction: column;

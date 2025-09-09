@@ -38,6 +38,7 @@ import {
   arrowForwardOutline,
 } from 'ionicons/icons';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
+import { AuthService } from '../services/auth/auth';
 
 @Component({
   selector: 'app-home',
@@ -117,7 +118,7 @@ export class HomePage implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
     addIcons({
       notificationsOutline,
       peopleCircleOutline,
@@ -130,6 +131,8 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.setRandomQuote();
+    // this.authService.getUser()
+    this.authService.signOut()
   }
 
   setRandomQuote() {

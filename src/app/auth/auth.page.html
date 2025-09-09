@@ -42,20 +42,6 @@
           </ion-button>
         </div>
 
-        <!-- Divider -->
-        <div class="divider-section">
-          <ion-text color="medium">
-            <p class="divider-text">ou</p>
-          </ion-text>
-        </div>
-
-        <!-- Connexion par email -->
-        <ion-button expand="block" fill="clear" color="primary" class="email-button" (click)="signInWithEmail()"
-          [disabled]="isLoading">
-          <ion-icon name="mail-outline" slot="start"></ion-icon>
-          Continuer avec email
-        </ion-button>
-
         <!-- Indicateur de chargement -->
         <div class="loading-section" *ngIf="isLoading">
           <ion-spinner name="crescent" color="primary"></ion-spinner>

@@ -29,13 +29,6 @@ export const routes: Routes = [
       import('./onboarding/onboarding.page').then((m) => m.OnboardingPage),
   },
   {
-    path: 'continue-with-email',
-    loadComponent: () =>
-      import('./continue-with-email/continue-with-email.page').then(
-        (m) => m.ContinueWithEmailPage
-      ),
-  },
-  {
     path: 'show-members/:id',
     loadComponent: () => import('./pages/show-members/show-members.page').then( m => m.ShowMembersPage)
   },

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule , ToastController} from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import {
   logoGoogle,
@@ -22,7 +22,11 @@ import { AuthService } from '../services/auth/auth';
 export class AuthPage implements OnInit {
   isLoading = false;
 
-  constructor(private router: Router, private authService: AuthService, private toastCtrl: ToastController) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toastCtrl: ToastController
+  ) {
     addIcons({
       logoGoogle,
       logoFacebook,
@@ -30,6 +34,7 @@ export class AuthPage implements OnInit {
       mailOutline,
     });
   }
+
   private async showToast(message: string) {
     const toast = await this.toastCtrl.create({
       message,
@@ -41,14 +46,12 @@ export class AuthPage implements OnInit {
 
   ngOnInit() {}
 
-   async signInWithGoogle() {
+  async signInWithGoogle() {
     this.isLoading = true;
     try {
-      const { data, error } = await this.authService.signInWithProvider('google');
-      if (error) throw error;
-
-      // Supabase redirige automatiquement l'utilisateur vers l'URL configurée
-      console.log('Connexion Google réussie:', data);
+      const user = await this.authService.signInWithProvider('google');
+      console.log('Connexion Google réussie:', user);
+      await this.showToast(`Bienvenue ${user?.user_metadata?.['nom'] || 'Utilisateur'} !`);
     } catch (error: any) {
       console.error('Erreur Google:', error);
       await this.showToast(`Erreur Google: ${error.message || error}`);
@@ -57,13 +60,12 @@ export class AuthPage implements OnInit {
     }
   }
 
-   async signInWithFacebook() {
+  async signInWithFacebook() {
     this.isLoading = true;
     try {
-      const { data, error } = await this.authService.signInWithProvider('facebook');
-      if (error) throw error;
-
-      console.log('Connexion Facebook réussie:', data);
+      const user = await this.authService.signInWithProvider('facebook');
+      console.log('Connexion Facebook réussie:', user);
+      await this.showToast(`Bienvenue ${user?.user_metadata?.['nom'] || 'Utilisateur'} !`);
     } catch (error: any) {
       console.error('Erreur Facebook:', error);
       await this.showToast(`Erreur Facebook: ${error.message || error}`);
@@ -75,20 +77,14 @@ export class AuthPage implements OnInit {
   async signInWithApple() {
     this.isLoading = true;
     try {
-      const { data, error } = await this.authService.signInWithProvider('apple');
-      if (error) throw error;
-
-      console.log('Connexion Apple réussie:', data);
+      const user = await this.authService.signInWithProvider('apple');
+      console.log('Connexion Apple réussie:', user);
+      await this.showToast(`Bienvenue ${user?.user_metadata?.['nom'] || 'Utilisateur'} !`);
     } catch (error: any) {
       console.error('Erreur Apple:', error);
       await this.showToast(`Erreur Apple: ${error.message || error}`);
     } finally {
       this.isLoading = false;
     }
-  }
-
-  async signInWithEmail() {
-    // Rediriger vers la page de connexion par email
-    this.router.navigate(['/continue-with-email']);
   }
 }
