@@ -131,8 +131,8 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.setRandomQuote();
-    // this.authService.getUser()
-    this.authService.signOut()
+    this.authService.getUser()
+    // this.authService.signOut()
   }
 
   setRandomQuote() {
