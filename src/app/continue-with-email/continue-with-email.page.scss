@@ -147,7 +147,7 @@
 }
 
 .terms-link {
-  color: var(--ion-color-light);
+  color: var(--ion-color-primary);
   text-decoration: underline;
   opacity: 1;
 }
@@ -168,6 +168,8 @@
 
   .page-title {
     font-size: 1.8rem;
+    margin-top: 18px;
+
   }
 
   .form-options {
@@ -181,6 +183,7 @@
   .email-auth-wrapper {
     padding: 40px;
   }
+  
 
   .auth-form-card {
     max-width: 450px;
@@ -194,6 +197,12 @@
 @media (min-width: 1024px) {
   .email-auth-wrapper {
     padding: 60px;
+      display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // min-height: calc(100vh - 56px); // Hauteur moins la toolbar
+  // padding: 20px;
   }
 
   .auth-form-card {
@@ -202,6 +211,7 @@
 
   .page-title {
     font-size: 2.5rem;
+    margin-top: 18px;
   }
 
   .footer-section {

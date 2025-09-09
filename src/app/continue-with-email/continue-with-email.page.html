@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/auth"></ion-back-button>
+      <ion-back-button defaultHref="/signup"></ion-back-button>
     </ion-buttons>
     <ion-title>Connexion par email</ion-title>
   </ion-toolbar>
@@ -35,10 +35,8 @@
           <ion-label position="stacked">Mot de passe</ion-label>
           <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Votre mot de passe"
             [(ngModel)]="formData.password" name="password" required minlength="6" #passwordInput="ngModel"
-            [class.ion-invalid]="passwordInput.invalid && passwordInput.touched"></ion-input>
-          <ion-button slot="end" fill="clear" size="small" (click)="togglePasswordVisibility()">
-            <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-          </ion-button>
+            [class.ion-invalid]="passwordInput.invalid && passwordInput.touched"><ion-input-password-toggle slot="end"
+              color="primary"></ion-input-password-toggle></ion-input>
           <ion-note slot="error" *ngIf="passwordInput.invalid && passwordInput.touched">
             Le mot de passe doit contenir au moins 6 caractères
           </ion-note>
@@ -46,11 +44,6 @@
 
         <!-- Options supplémentaires -->
         <div class="form-options">
-          <ion-item lines="none" class="checkbox-item">
-            <ion-checkbox slot="start" [(ngModel)]="rememberMe" name="rememberMe"></ion-checkbox>
-            <ion-label class="checkbox-label">Se souvenir de moi</ion-label>
-          </ion-item>
-
           <ion-button fill="clear" size="small" class="forgot-password-btn" (click)="forgotPassword()">
             Mot de passe oublié ?
           </ion-button>

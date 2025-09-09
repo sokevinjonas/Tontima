@@ -36,7 +36,7 @@ export class OnboardingPage implements OnInit {
   }
 
   goToAuth() {
-    this.router.navigateByUrl('/auth');
+    this.router.navigateByUrl('/signup');
   }
 
   onSlideChange() {

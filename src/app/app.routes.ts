@@ -20,7 +20,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'auth',
+    path: 'signup',
     loadComponent: () => import('./auth/auth.page').then((m) => m.AuthPage),
   },
   {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule , ToastController} from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import {
   logoGoogle,
@@ -10,6 +10,7 @@ import {
   logoApple,
   mailOutline,
 } from 'ionicons/icons';
+import { AuthService } from '../services/auth/auth';
 
 @Component({
   selector: 'app-auth',
@@ -21,7 +22,7 @@ import {
 export class AuthPage implements OnInit {
   isLoading = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService, private toastCtrl: ToastController) {
     addIcons({
       logoGoogle,
       logoFacebook,
@@ -29,57 +30,60 @@ export class AuthPage implements OnInit {
       mailOutline,
     });
   }
+  private async showToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 3000,
+      position: 'top',
+    });
+    toast.present();
+  }
 
   ngOnInit() {}
 
-  async signInWithGoogle() {
+   async signInWithGoogle() {
     this.isLoading = true;
     try {
-      // TODO: Implémenter l'authentification Google avec Supabase
-      console.log('Connexion avec Google...');
+      const { data, error } = await this.authService.signInWithProvider('google');
+      if (error) throw error;
 
-      // Simulation d'une connexion réussie
-      setTimeout(() => {
-        this.isLoading = false;
-        this.router.navigate(['/tabs/home']);
-      }, 2000);
-    } catch (error) {
+      // Supabase redirige automatiquement l'utilisateur vers l'URL configurée
+      console.log('Connexion Google réussie:', data);
+    } catch (error: any) {
+      console.error('Erreur Google:', error);
+      await this.showToast(`Erreur Google: ${error.message || error}`);
+    } finally {
       this.isLoading = false;
-      console.error('Erreur lors de la connexion Google:', error);
     }
   }
 
-  async signInWithFacebook() {
+   async signInWithFacebook() {
     this.isLoading = true;
     try {
-      // TODO: Implémenter l'authentification Facebook avec Supabase
-      console.log('Connexion avec Facebook...');
+      const { data, error } = await this.authService.signInWithProvider('facebook');
+      if (error) throw error;
 
-      // Simulation d'une connexion réussie
-      setTimeout(() => {
-        this.isLoading = false;
-        this.router.navigate(['/tabs/home']);
-      }, 2000);
-    } catch (error) {
+      console.log('Connexion Facebook réussie:', data);
+    } catch (error: any) {
+      console.error('Erreur Facebook:', error);
+      await this.showToast(`Erreur Facebook: ${error.message || error}`);
+    } finally {
       this.isLoading = false;
-      console.error('Erreur lors de la connexion Facebook:', error);
     }
   }
 
   async signInWithApple() {
     this.isLoading = true;
     try {
-      // TODO: Implémenter l'authentification Apple avec Supabase
-      console.log('Connexion avec Apple...');
+      const { data, error } = await this.authService.signInWithProvider('apple');
+      if (error) throw error;
 
-      // Simulation d'une connexion réussie
-      setTimeout(() => {
-        this.isLoading = false;
-        this.router.navigate(['/tabs/home']);
-      }, 2000);
-    } catch (error) {
+      console.log('Connexion Apple réussie:', data);
+    } catch (error: any) {
+      console.error('Erreur Apple:', error);
+      await this.showToast(`Erreur Apple: ${error.message || error}`);
+    } finally {
       this.isLoading = false;
-      console.error('Erreur lors de la connexion Apple:', error);
     }
   }
 
